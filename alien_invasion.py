@@ -62,6 +62,9 @@ class AlienInvasion:
 
     def _update_bullets(self):
         self.bullets.update()
+        if not self.aliens:
+              self.bullets.empty()
+              self._create_fleet()
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                  self.bullets.remove(bullet)
