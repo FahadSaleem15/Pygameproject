@@ -14,7 +14,6 @@ class AlienInvasion:
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
         pygame.display.set_caption("Alien Invasion")
-
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
@@ -48,6 +47,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
 
     def _update_bullets(self):
@@ -56,6 +56,10 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0:
                  self.bullets.remove(bullet)
             print(len(self.bullets))
+    
+    def _update_aliens(self):
+         self.aliens.update()
+
 
 
     def _check_events(self):
