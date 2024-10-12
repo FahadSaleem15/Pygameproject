@@ -51,12 +51,15 @@ class AlienInvasion:
                    break
     
     def _ship_hit(self):
-         self.stats.ships_left -= 1
-         self.aliens.empty()
-         self.bullets.empty()
-         self._create_fleet()
-         self.ship.center_ship()
-         sleep(0.5)
+        if self.stats.ships_left > 0:
+             self.stats.ships_left -= 1
+             self.aliens.empty()
+             self.bullets.empty()
+             self._create_fleet()
+             self.ship.center_ship()
+             sleep(0.5)
+        else:
+             self.stats.game_active = False
               
     def _change_fleet_direction(self):
          for alien in self.aliens.sprites():
